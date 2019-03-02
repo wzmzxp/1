@@ -44,5 +44,5 @@ for i=1:3
     end
 end
 % result0=result0*(g*k)/9;
-coef=1;
+coef=
 result0=coef*result0*(g*k)/9;

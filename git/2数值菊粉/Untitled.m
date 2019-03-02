@@ -8,7 +8,7 @@ epis=8.85*1e-12;k=(1e-3);
 GEL=(epis*k)*0.5*(ksi_f1*ksi_f1+ksi_f2*ksi_f2)*(1-coth(K*h0)+((2*ksi_f1*ksi_f2)/(ksi_f1*ksi_f1+ksi_f2*ksi_f2))*csch(k*h0))
 
 rw0=0;rw1=0;rf10=0; rf11=0;rf20=0;rf21=0;
-GAB=2*(power(rw1,0.5)*(power(rf20,0.5)+power(rf10,0.5)-power(rw0,0.5)))
+GAB=2*(power(rw1,0.5)*(power(rf20,0.5)+power(rf10,0.5)-power(rw0,0.5))+power(rw0,0.5)*(power(rf21,0.5)+power(rf11,0.5)-power(rw1,0.5))-power(rf20*rf11,0.5)))))))
 
 lamada=0.05;D=1;n=30;
 %fai cita
