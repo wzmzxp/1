@@ -1,5 +1,5 @@
-global r lamada lamada_cita n_cita lamada_fai n_fai h0
-
+global r lamada lamada_cita n_cita lamada_fai n_fai h0 D
+r=0;lamada=0.05;lamada_cita=lamada;n=30;n_cita=n;lamada_fai=lamada;n_fai=n;h0=0.158;D=1;
 rf1=47.25;rw=21.8;rf2=37.98;
 GLW=-2*(power(rf1,0.5)-power(rw,0.5))*(power(rf2,0.5)-power(rw,0.5));
 % epis0*episr=8.85*1e-12;
