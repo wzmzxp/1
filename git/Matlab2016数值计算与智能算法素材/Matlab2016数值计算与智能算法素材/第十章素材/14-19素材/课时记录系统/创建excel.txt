@@ -1,0 +1,55 @@
+global record
+[filename,pathname]=uiputfile({'*.xls','Excel 97-03文档(*.xls)';'*.xlsx','Excel 文档(*.xlsx)'},'另存为');
+name=[pathname,filename];
+h = waitbar(0,'存储中...');
+e = actxserver('Excel.Application');%创建一个excel对象
+if exist(name,'file')
+    Workbook = e.Workbooks.Open(name);
+else
+    Workbook = e.Workbooks.Add;
+    Workbook.SaveAs(name);  
+end
+e.Visible = 1;
+
+eSheets = e.ActiveWorkbook.Sheets;
+eSheet1 = eSheets.get('Item',1);
+eSheet1.Activate
+
+%设置单元格
+eSheet1.Range('B1:I1').ColumnWidth = {5,15,15,8,8,8,50,20};
+eSheet1.Range('B3:I3').MergeCells = 1;
+eSheet1.Range('B3').RowHeight = 40;
+eSheet1.Range('B3').HorizontalAlignment = 3;    
+eSheet1.Range('B3').VerticalAlignment = -4108;
+
+eSheet1.Range('B3').Font.size = 24;
+eSheet1.Range('B3').Font.name = '宋体';
+
+
+
+eSheet1.Range('B3').Value=handles.biaoti.String;
+eSheet1.Range('B4').Value='序号';
+eSheet1.Range('C4').Value='日期';
+eSheet1.Range('D4').Value='时间';
+eSheet1.Range('E4').Value='课时(h)';
+eSheet1.Range('F4').Value='班型';
+eSheet1.Range('G4').Value='年级';
+eSheet1.Range('H4').Value='学生';
+eSheet1.Range('I4').Value='备注';
+
+for i = 1:size(record,1)
+    waitbar(i/ size(record,1))
+    fanwei=['B',num2str(4+i),':','I',num2str(4+i)];
+    eSheet1.Range(fanwei).HorizontalAlignment = 3;    % -4130
+    eSheet1.Range(fanwei).VerticalAlignment = -4108;
+    eSheet1.Range(fanwei).Font.size = 12;
+    eSheet1.Range(fanwei).Font.name = '宋体';
+    
+    eSheet1.Range(fanwei).Value=record(i,:);
+end
+
+Workbook.Save   % 保存文档
+waitbar(1,h,'存储完成');
+pause(1)
+close(h) 
+e.WorkBooks.Close;

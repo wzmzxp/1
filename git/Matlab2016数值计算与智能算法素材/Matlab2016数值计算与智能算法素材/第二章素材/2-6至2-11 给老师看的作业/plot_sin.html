@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0115)file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>plot_sin</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-10-02"><meta name="DC.source" content="plot_sin.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html#1">绘制正弦</a></li><li><a href="file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html#2">X是一个向量</a></li><li><a href="file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html#3">X是一个矩阵</a></li><li><a href="file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html#4">plot(X,Y),X、Y是向量</a></li><li><a href="file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html#5">X、Y都是矩阵</a></li><li><a href="file:///C:/Users/GongYan/Desktop/%E7%BB%99%E8%80%81%E5%B8%88%E7%9C%8B%E7%9A%84%E4%BD%9C%E4%B8%9A/html/plot_sin.html#6">复数</a></li></ul></div><h2 id="1">绘制正弦</h2><pre class="codeinput">clear
+clc
+x=-2*pi:0.1:2*pi;
+y=sin(x);
+y1=cos(x);
+plot(x,y,<span class="string">'r--'</span>)<span class="comment">%红色显示曲线</span>
+hold <span class="string">on</span> <span class="comment">%图形保持</span>
+plot(x,y1,<span class="string">'b-'</span>)<span class="comment">%绘制蓝色余弦曲线</span>
+<span class="comment">% xlabel({'正弦函数','sin'})%分行显示</span>
+xlabel(<span class="string">'正弦曲线 余弦曲线'</span>)
+</pre><img vspace="5" hspace="5" src="./plot_sin_files/plot_sin_01.png" alt=""> <h2 id="2">X是一个向量</h2><p>X=2:3:30; plot(X)</p><h2 id="3">X是一个矩阵</h2><p>X=[2 5 9;7 8 1;9 6 3;]; plot(X)</p><h2 id="4">plot(X,Y),X、Y是向量</h2><p>X=[1 5 9 3]; Y=[4 2 6 9]; plot(X,Y)</p><h2 id="5">X、Y都是矩阵</h2><p>A=[1 2 6;    3 10 9;]; B=[5 7 2;    12 9 3;]; plot(A,B)</p><h2 id="6">复数</h2><p>X是一个复数，那么，横坐标是实部，纵坐标是虚部 plot([1+2*1i,2+4*1i]);</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB® R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% 绘制正弦
+clear
+clc
+x=-2*pi:0.1:2*pi;
+y=sin(x);
+y1=cos(x);
+plot(x,y,'rREPLACE_WITH_DASH_DASH')%红色显示曲线
+hold on %图形保持
+plot(x,y1,'b-')%绘制蓝色余弦曲线
+% xlabel({'正弦函数','sin'})%分行显示
+xlabel('正弦曲线 余弦曲线')
+%% X是一个向量
+% X=2:3:30;
+% plot(X)
+%% X是一个矩阵
+% X=[2 5 9;7 8 1;9 6 3;];
+% plot(X)
+%% plot(X,Y),X、Y是向量
+% X=[1 5 9 3];
+% Y=[4 2 6 9];
+% plot(X,Y)
+
+%% X、Y都是矩阵
+% A=[1 2 6;
+%    3 10 9;];
+% B=[5 7 2;
+%    12 9 3;];
+% plot(A,B)
+
+%% 复数
+% X是一个复数，那么，横坐标是实部，纵坐标是虚部
+% plot([1+2*1i,2+4*1i]);
+
+
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,6 @@
+function CHA=chashang(X,Y)
+m=length(X);
+
+for i=1:m-1  %ππ‘Ïm-1Ω◊≤Ó…Ã
+    CHA=diff(Y)./diff(X);
+end
