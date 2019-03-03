@@ -1,8 +1,9 @@
 n=10;
 k=4
-
-p=randi(2.^[0:1:4], 1,n)
-g=randi(2.^(0:1),1,n);
+index=randi(k+1,1,n);
+a=2.^[0:1:k]
+p=a(index)
+p=randi(2.^(0:1),1,n);
 s1=0;
 s2=0;
 TG1=0

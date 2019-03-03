@@ -1,4 +1,4 @@
-function [outputArg1,coef] = GAB(cita,fai)
+function [outputArg1,coef] = UAB(cita,fai)
 %GAB 此处显示有关此函数的摘要
 %   此处显示详细说明
 global r lamada lamada_cita n_cita lamada_fai n_fai h0 D
