@@ -10,7 +10,7 @@ a=0;b=2*pi;c=0;d=2*pi;
 g=(b-a)/(2*p);k=(d-c)/(2*q);
 x=zeros(p*2,1);
 y=zeros(q*2,1);
-X=zeros(6,6);
+X=zeros(7,7);
 for i=1:2*p+1;
     x(i)=a+(i-1)*g
 end
@@ -18,9 +18,9 @@ for i=1:2*p+1;
     y(i)=c+(i-1)*g
 end
 % temp=0;
-for i=1:6
-    for j=1:6
-        [X(i,j),a]=UEL(x(i),y(j));
+for i=1:7
+    for j=1:7
+        [X(i,j),a]=ULW(x(i),y(j));
         
     end
 end
