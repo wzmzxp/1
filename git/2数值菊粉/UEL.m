@@ -1,6 +1,6 @@
 function [outputArg1,coef]= UEL(cita,fai)
 global r lamada lamada_cita n_cita lamada_fai n_fai h0 D
-epis=8.85*1e-12;k=1/(1e-3);
+epis=7*1e-11;k=10;
 % ksi_f1:-31.53+-1.32
 % ksi_f2:-21.90+-1.76
 R=r+r*lamada_cita*cos(n_cita*cita)+r*lamada_fai*cos(n_fai*fai)+eps;

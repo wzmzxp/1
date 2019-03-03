@@ -20,7 +20,7 @@ end
 % temp=0;
 for i=1:7
     for j=1:7
-        [X(i,j),a]=ULW(x(i),y(j));
+        [X(i,j),a]=UEL(x(i),y(j));
         
     end
 end
