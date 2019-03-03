@@ -2,7 +2,9 @@ clear all
 
 global r lamada lamada_cita n_cita lamada_fai n_fai h0 D
 r=5;lamada=0.05;lamada_cita=lamada;n=30;n_cita=n;lamada_fai=lamada;n_fai=n;h0=0.158;D=1;
-
+[a,GAB]=GAB(1,1);
+[a,UEL]=UEL(1,1);;
+[a,ULW]=ULW(1,1);
 p=3;q=3;
 a=0;b=2*pi;c=0;d=2*pi;
 g=(b-a)/(2*p);k=(d-c)/(2*q);
@@ -21,6 +23,7 @@ for i=1:6
         X(i,j)=GAB(x(i),y(j));
     end
 end
+coef=1;
 result0=0;
 result=0;
 result1=0;
@@ -46,5 +49,5 @@ for i=1:3
     end
 end
 % result0=result0*(g*k)/9;
-coef=1;
+
 result0=coef*result0*(g*k)/9;

@@ -1,4 +1,4 @@
-function ULW = F1( cita,fai )
+function [ULW,coef]= F1( cita,fai )
 global r lamada lamada_cita n_cita lamada_fai n_fai h0 D
 R=r+r*lamada_cita*cos(n_cita*cita)+r*lamada_fai*cos(n_fai*fai)+eps;
 
