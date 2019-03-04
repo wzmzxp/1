@@ -18,9 +18,9 @@ for i=1:2*p+1;
     y(i)=c+(i-1)*g
 end
 % temp=0;
-for i=1:7
-    for j=1:7
-        [X(i,j),a]=UEL(x(i),y(j));
+for i=1:6
+    for j=1:6
+        [X(i,j),a]=ULW(x(i),y(j));
         
     end
 end
