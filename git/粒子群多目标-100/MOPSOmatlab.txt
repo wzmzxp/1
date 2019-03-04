@@ -1,0 +1,1119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 改进的多目标粒子群算法，包括多个测试函数
+% 对程序中的部分参数进行修改将更好地求解某些函数
+% 程序中的所有代码都是本人根据多目标粒子群算法设计实现的
+% 
+
+ZDT1NP=cell(1,50);
+ZDT1FV=cell(1,50);
+ZDT1T=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('ZDT1',0.1,50,100,2.0,1.0,0.4,200,30,zeros(1,30),ones(1,30));%--ZDT1
+    elapsedTime=toc;
+    ZDT1NP(i)={np};
+    ZDT1FV(i)={fv};
+    ZDT1T(i)=elapsedTime;display(strcat('ZDT1',num2str(i)));
+end
+zdt1fv=cell2mat(ZDT1FV');
+zdt1fv=GetLeastFunctionValue(zdt1fv);
+
+ZDT2NP=cell(1,50);
+ZDT2FV=cell(1,50);
+ZDT2T=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('ZDT2',0.1,50,100,2.0,1.0,0.4,200,30,zeros(1,30),ones(1,30),[1,zeros(1,29)]);%--ZDT2
+    elapsedTime=toc;
+    ZDT2NP(i)={np};
+    ZDT2FV(i)={fv};
+    ZDT2T(i)=elapsedTime;display(strcat('ZDT2',num2str(i)));
+end
+zdt2fv=cell2mat(ZDT2FV');
+zdt2fv=GetLeastFunctionValue(zdt2fv);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+ZDT3NP=cell(1,50);
+ZDT3FV=cell(1,50);
+ZDT3T=zeros(1,50);
+for i=1:50
+    tic;
+%     [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('ZDT3',0.1,50,100,2.0,1.0,0.4,400,30,zeros(1,30),ones(1,30));%--ZDT3
+    elapsedTime=toc;
+    ZDT3NP(i)={np};
+    ZDT3FV(i)={fv};
+    ZDT3T(i)=elapsedTime;display(strcat('ZDT3',num2str(i)));
+end
+zdt3fv=cell2mat(ZDT3FV');
+zdt3fv=GetLeastFunctionValue(zdt3fv);
+
+ZDT4NP=cell(1,50);
+ZDT4FV=cell(1,50);
+ZDT4T=zeros(1,50);
+for i=1:50
+    tic;
+%     [np,nprule,dnp,fv,goals]=ParticleSwarmOpt('ZDT4',0.1,50,100,2.0,1.0,0.4,200,10,[0,-5,-5,-5,-5,-5,-5,-5,-5,-5],[1,5,5,5,5,5,5,5,5,5],[1,0,0,0,0,0,0,0,0,0]);%--ZDT4
+    elapsedTime=toc;
+    ZDT4NP(i)={np};
+    ZDT4FV(i)={fv};
+    ZDT4T(i)=elapsedTime;display(strcat('ZDT4',num2str(i)));
+end
+zdt4fv=cell2mat(ZDT4FV');
+zdt4fv=GetLeastFunctionValue(zdt4fv);
+%%%%%%%%%%%%%%%%%%%%%%%%
+ZDT6NP=cell(1,50);
+ZDT6FV=cell(1,50);
+ZDT6T=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('ZDT6',0.1,50,100,2.0,1.0,0.4,200,10,zeros(1,10),ones(1,10));%--ZDT6
+    elapsedTime=toc;
+    ZDT6NP(i)={np};
+    ZDT6FV(i)={fv};
+    ZDT6T(i)=elapsedTime;display(strcat('ZDT6',num2str(i)));
+end
+zdt6fv=cell2mat(ZDT6FV');
+zdt6fv=GetLeastFunctionValue(zdt6fv);
+
+CTP1NP=cell(1,50);
+CTP1FV=cell(1,50);
+CTP1T=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP1',0.1,50,100,2.0,1.0,0.4,1500,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[],struct('isfmopso',false,'istargetdis',false,'stopatborder',true));%--CTP1
+    elapsedTime=toc;
+    CTP1NP(i)={np};
+    CTP1FV(i)={fv};
+    CTP1T(i)=elapsedTime;display(strcat('CTP1',num2str(i)));
+end
+ctp1fv=cell2mat(CTP1FV');
+ctp1fv=GetLeastFunctionValue(ctp1fv);
+
+CTP1fmNP=cell(1,50);
+CTP1fmFV=cell(1,50);
+CTP1fmT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP1',0.1,50,100,2.0,1.0,0.4,400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[0 0 0 0 0],struct('isfmopso',true,'istargetdis',false,'stopatborder',true));%--CTP1
+    elapsedTime=toc;
+    CTP1fmNP(i)={np};
+    CTP1fmFV(i)={fv};
+    CTP1fmT(i)=elapsedTime;display(strcat('CTP1fm',num2str(i)));
+end
+ctp1fmfv=cell2mat(CTP1fmFV');
+ctp1fmfv=GetLeastFunctionValue(ctp1fmfv);
+
+CTP2NP=cell(1,50);
+CTP2FV=cell(1,50);
+CTP2T=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP2',0.1,50,100,2.0,1.0,0.4,1500,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[],struct('isfmopso',false,'istargetdis',false,'stopatborder',true));%--CTP2
+    elapsedTime=toc;
+    CTP2NP(i)={np};
+    CTP2FV(i)={fv};
+    CTP2T(i)=elapsedTime;display(strcat('CTP2',num2str(i)));
+end
+ctp2fv=cell2mat(CTP2FV');
+ctp2fv=GetLeastFunctionValue(ctp2fv);
+
+CTP2fmNP=cell(1,50);
+CTP2fmFV=cell(1,50);
+CTP2fmT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP2',0.1,50,100,2.0,1.0,0.4,400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[0 0 0 0 0],struct('isfmopso',true,'istargetdis',false,'stopatborder',true));%--CTP2
+    elapsedTime=toc;
+    CTP2fmNP(i)={np};
+    CTP2fmFV(i)={fv};
+    CTP2fmT(i)=elapsedTime;display(strcat('CTP2fm',num2str(i)));
+end
+ctp2fmfv=cell2mat(CTP2fmFV');
+ctp2fmfv=GetLeastFunctionValue(ctp2fmfv);
+
+CTP3NP=cell(1,50);
+CTP3FV=cell(1,50);
+CTP3T=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP3',0.1,50,100,2.0,1.0,0.4,1400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[],struct('isfmopso',false,'istargetdis',false,'stopatborder',true));%--CTP3
+    elapsedTime=toc;
+    CTP3NP(i)={np};
+    CTP3FV(i)={fv};
+    CTP3T(i)=elapsedTime;display(strcat('CTP3',num2str(i)));
+end
+ctp3fv=cell2mat(CTP3FV');
+ctp3fv=GetLeastFunctionValue(ctp3fv);
+
+CTP3fmNP=cell(1,50);
+CTP3fmFV=cell(1,50);
+CTP3fmT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP3',0.1,50,100,2.0,1.0,0.4,400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[0 0 0 0 0],struct('isfmopso',true,'istargetdis',false,'stopatborder',true));%--CTP3
+    elapsedTime=toc;
+    CTP3fmNP(i)={np};
+    CTP3fmFV(i)={fv};
+    CTP3fmT(i)=elapsedTime;display(strcat('CTP3fm',num2str(i)));
+end
+ctp3fmfv=cell2mat(CTP3fmFV');
+ctp3fmfv=GetLeastFunctionValue(ctp3fmfv);
+
+CTP4NP=cell(1,50);
+CTP4FV=cell(1,50);
+CTP4T=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP4',0.1,50,100,2.0,1.0,0.4,1400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[],struct('isfmopso',false,'istargetdis',false,'stopatborder',true));%--CTP4
+    elapsedTime=toc;
+    CTP4NP(i)={np};
+    CTP4FV(i)={fv};
+    CTP4T(i)=elapsedTime;display(strcat('CTP4',num2str(i)));
+end
+ctp4fv=cell2mat(CTP4FV');
+ctp4fv=GetLeastFunctionValue(ctp4fv);
+
+CTP4fmNP=cell(1,50);
+CTP4fmFV=cell(1,50);
+CTP4fmT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP4',0.1,50,100,2.0,1.0,0.4,400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[0 0 1 0 0],struct('isfmopso',true,'istargetdis',false,'stopatborder',true));%--CTP4
+    elapsedTime=toc;
+    CTP4fmNP(i)={np};
+    CTP4fmFV(i)={fv};
+    CTP4fmT(i)=elapsedTime;display(strcat('CTP4fm',num2str(i)));
+end
+ctp4fmfv=cell2mat(CTP4fmFV');
+ctp4fmfv=GetLeastFunctionValue(ctp4fmfv);
+
+CTP5NP=cell(1,50);
+CTP5FV=cell(1,50);
+CTP5T=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP5',0.1,50,100,2.0,1.0,0.4,200,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[0 0 0 0 0]);%--CTP5
+    elapsedTime=toc;
+    CTP5NP(i)={np};
+    CTP5FV(i)={fv};
+    CTP5T(i)=elapsedTime;display(strcat('CTP5',num2str(i)));
+end
+ctp5fv=cell2mat(CTP5FV');
+ctp5fv=GetLeastFunctionValue(ctp5fv);
+
+CTP6NP=cell(1,50);
+CTP6FV=cell(1,50);
+CTP6T=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP6',0.1,50,100,2.0,1.0,0.4,400,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[0 0 0 0 0]);%--CTP6
+    elapsedTime=toc;
+    CTP6NP(i)={np};
+    CTP6FV(i)={fv};
+    CTP6T(i)=elapsedTime;display(strcat('CTP6',num2str(i)));
+end
+ctp6fv=cell2mat(CTP6FV');
+ctp6fv=GetLeastFunctionValue(ctp6fv);
+
+CTP7NP=cell(1,50);
+CTP7FV=cell(1,50);
+CTP7T=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP7',0.1,50,100,2.0,1.0,0.4,1000,5,[0,-5,-5,-5,-5],[1,5,5,5,5],[1 0 0 0 0]);%--CTP7
+    elapsedTime=toc;
+    CTP7NP(i)={np};
+    CTP7FV(i)={fv};
+    CTP7T(i)=elapsedTime;display(strcat('CTP7',num2str(i)));
+end
+ctp7fv=cell2mat(CTP7FV');
+ctp7fv=GetLeastFunctionValue(ctp7fv);
+
+CONSTRNP=cell(1,50);
+CONSTRFV=cell(1,50);
+CONSTRT=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP8',0.1,50,100,2.0,1.0,0.4,200,2,[0.1,0],[1,5]);%--CTP8,CONSTR
+    elapsedTime=toc;
+    CONSTRNP(i)={np};
+    CONSTRFV(i)={fv};
+    CONSTRT(i)=elapsedTime;display(strcat('CTP8',num2str(i)));
+end
+constrfv=cell2mat(CONSTRFV');
+constrfv=GetLeastFunctionValue(constrfv);
+
+SRNNP=cell(1,50);
+SRNFV=cell(1,50);
+SRNT=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP9',0.1,50,100,2.0,1.0,0.4,200,2,[-20,-20],[20,20]);%--CTP9,SRN
+    elapsedTime=toc;
+    SRNNP(i)={np};
+    SRNFV(i)={fv};
+    SRNT(i)=elapsedTime;display(strcat('CTP9',num2str(i)));
+end
+srnfv=cell2mat(SRNFV');
+srnfv=GetLeastFunctionValue(srnfv);
+
+TNKNP=cell(1,50);
+TNKFV=cell(1,50);
+TNKT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP10',0.1,50,100,2.0,1.0,0.4,1300,2,[0,0],[pi,pi],[],struct('isfmopso',false,'istargetdis',false,'stopatborder',false));%--CTP10,TNK
+    elapsedTime=toc;
+    TNKNP(i)={np};
+    TNKFV(i)={fv};
+    TNKT(i)=elapsedTime;display(strcat('CTP10',num2str(i)));
+end
+tnkfv=cell2mat(TNKFV');
+tnkfv=GetLeastFunctionValue(tnkfv);
+
+TNKfmNP=cell(1,50);
+TNKfmFV=cell(1,50);
+TNKfmT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('CTP10',0.1,50,100,2.0,1.0,0.4,300,2,[0,0],[pi,pi],[],struct('isfmopso',true,'istargetdis',false,'stopatborder',false));%--CTP10,TNK
+    elapsedTime=toc;
+    TNKfmNP(i)={np};
+    TNKfmFV(i)={fv};
+    TNKfmT(i)=elapsedTime;display(strcat('CTP10fm',num2str(i)));
+end
+tnkfmfv=cell2mat(TNKfmFV');
+tnkfmfv=GetLeastFunctionValue(tnkfmfv);
+
+BNHNP=cell(1,50);
+BNHFV=cell(1,50);
+BNHT=zeros(1,50);
+for i=1:50
+    tic;
+    %[np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('BNH',0.1,50,100,2.0,1.0,0.4,200,2,zeros(1,2),[5,3]);%--BNH
+    elapsedTime=toc;
+    BNHNP(i)={np};
+    BNHFV(i)={fv};
+    BNHT(i)=elapsedTime;display(strcat('BNH',num2str(i)));
+end
+bnhfv=cell2mat(BNHFV');
+bnhfv=GetLeastFunctionValue(bnhfv);
+
+OSYNP=cell(1,50);
+OSYFV=cell(1,50);
+OSYT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('OSY',0.1,50,100,2.0,1.0,0.4,1500,6,[0,0,1,0,1,0],[10,10,5,6,5,10],[],struct('isfmopso',false,'istargetdis',false,'stopatborder',true));%--OSY
+    elapsedTime=toc;
+    OSYNP(i)={np};
+    OSYFV(i)={fv};
+    OSYT(i)=elapsedTime;display(strcat('OSY',num2str(i)));
+end
+osyfv=cell2mat(OSYFV');
+osyfv=GetLeastFunctionValue(osyfv);
+
+OSYfmNP=cell(1,50);
+OSYfmFV=cell(1,50);
+OSYfmT=zeros(1,50);
+for i=1:50
+    tic;
+    [np,nprule,dnp,fv,goals,pbest]=ParticleSwarmOpt('OSY',0.1,50,100,2.0,1.0,0.4,500,6,[0,0,1,0,1,0],[10,10,5,6,5,10],[],struct('isfmopso',true,'istargetdis',false,'stopatborder',true));%--OSY
+    elapsedTime=toc;
+    OSYfmNP(i)={np};
+    OSYfmFV(i)={fv};
+    OSYfmT(i)=elapsedTime;display(strcat('OSYfm',num2str(i)));
+end
+osyfmfv=cell2mat(OSYfmFV');
+osyfmfv=GetLeastFunctionValue(osyfmfv);
+
+function [np,nprule,dnp,fv,goals,pbest] = ParticleSwarmOpt(funcname,unfitx,N,Nnp,cmax,cmin,w,M,D,lb,ub,x0,params)
+%待优化的目标函数:fitness
+%约束容忍度unfitx=0.01,逐步降到0
+%内部种群(粒子数目)：N
+%外部种群(非劣解集):Nnp
+%学习因子1:cmax
+%学习因子2:cmin
+%惯性权重:w
+%最大迭代次数：M
+%问题的维数：D
+%目标函数取最小值时的自变量值:xm
+%目标函数的最小值:fv
+%迭代次数:cv
+
+format long;
+NP=[];%非劣解集
+Dnp=[];%非劣解集距离
+
+
+if nargin < 13
+    params = struct('isfmopso',false,'istargetdis',false,'stopatborder',true);
+end
+if (nargin < 12 || isempty(x0))
+    x0=lb+(ub-lb).*rand([1,D]);
+end
+T=size(fitness(x0,funcname),2);
+goals=zeros(M,N,T);%记下N个粒子M次迭代T维目标变化
+%----初始化种群的个体--------///////第1步///////////////////////////////////
+x(1,:)=x0;
+v(1,:)=(ub-lb).*rand([1,D])*0.5;
+for i=2:N
+    for j=1:D
+        x(i,j)=lb(j)+(ub(j)-lb(j))*rand;  %随机初始化位置
+        v(i,j)=(ub(j)-lb(j))*rand*0.5; %随机初始化速度
+    end
+end
+%----计算目标向量----------
+%---速度控制
+vmax=(ub-lb)*0.5;
+vmin= -vmax;
+
+%-----求出初始NP-----------////////第2步///////////////////////////////////
+NP(1,:)=x(1,:);%第一个默认加入NP
+NPRule=[0,0,0];%非劣解集参数
+Dnp(1,1)=0;
+
+for i=2:N
+    faix = GetFai(x(i,:),funcname,params);
+    if faix<=unfitx
+      [NP,NPRule,Dnp] = compare(x(i,:),NP,NPRule,Dnp,Nnp,funcname,params);
+    end
+end
+%-----初始自身最好位置------///////第3步////////////////////////////////////
+pbest = x;%自身最优解
+
+%-----在确定每个粒子所对就的目标方格-------//第4步///////////////////////////
+
+
+%------进入主要循环，按照公式依次迭代------------
+for t=1:M  
+    if mod(t,100)==0        
+        unfitx = 0.01-0.01*(t+200)/M;
+        if unfitx <0 
+            unfitx =0 ;
+        end
+       % [x,v,pbest,NP,NPRule,Dnp]=ReInit(x,v,pbest,NP,NPRule,Dnp,Nnp,D,lb,ub,unfitx);        
+    end
+    c = cmax - (cmax - cmin)*t/M;
+    w1=w-(w-0.3)*t/M;
+    %c = cmax;   
+    %c = cmax - (cmax - cmin)*mod(t,51)/50;
+    %w1=w-(w-0.3)*mod(t,51)/50;
+    
+%-----获得全局最优-------/////第5步/////////////////////////////////////////
+      %if mod(t,3)==1
+       %[gbest,NPRule] = GetGlobalBest(NP,NPRule,Dnp);
+      %end
+
+    for i=1:N
+%-------------------更新粒子的位置和速度----------////第6步//////////////////      
+      %v(i,:)=w*v(i,:)+cmin*rand*(pbest(i,:)-x(i,:))+cmax*rand*(gbest-x(i,:));
+      %[gbest,NPRule] = GetGlobalBest2(x(i,:),NP,NPRule);%%%%%12-17
+      [gbest,NPRule] = GetGlobalBest(NP,NPRule,Dnp);
+      %w1=Inf;
+      %while(w1>1.2 || w1<0)
+      %  w1=0.8+randn*0.8;
+      %end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%模糊向导粒子群算法     
+      if(params.isfmopso)
+          nploc=x(i,:);
+          npruleloc=[0,0,0];
+          dnploc(1,1)=0;
+          tempv=zeros(10,D);
+          tempx=zeros(10,D);
+          for k=1:10
+            tempv(k,:)=w1*v(i,:)+c*rand*(pbest(i,:)-x(i,:))+c*rand*(gbest-x(i,:));
+            for j=1:D
+                if tempv(k,j)>vmax(j) 
+                    tempv(k,j)=vmax(j);
+                elseif tempv(k,j)<vmin(j) 
+                    tempv(k,j)=vmin(j);
+                end 
+            end
+            tempx(k,:)=x(i,:)+tempv(k,:);
+            faix = GetFai(x(i,:),funcname,params);
+            if faix<=unfitx
+            [nploc,npruleloc,dnploc] = compare(tempx(k,:),nploc,npruleloc,dnploc,10,funcname,params);
+            end
+          end
+          nnx=size(nploc,1);
+          seltemp=randi([1,nnx]);
+          ttv=nploc(seltemp,:)-x(i,:);
+          x(i,:)=nploc(seltemp,:);
+          if sum(abs(ttv))>0
+              v(i,:)=ttv;
+          end
+      else
+%%%%%%%%%%%%%%%%%%%
+          v(i,:)=w1*v(i,:)+c*rand*(pbest(i,:)-x(i,:))+c*rand*(gbest-x(i,:));
+          for j=1:D
+            if v(i,j)>vmax(j) 
+                v(i,j)=vmax(j);
+            elseif  v(i,j)<vmin(j) 
+                v(i,j)=vmin(j);
+            end 
+          end
+           x(i,:)=x(i,:)+v(i,:);
+           funcname=upper(funcname);
+           if(strcmp(funcname(1:3),'CTP'))
+              x(i,:)=x(i,:)+v(i,:);
+           end
+      end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------采取措施，避免粒子飞出空间----------////第7步/////////////
+         %速度位置钳制
+        if(params.stopatborder)%粒子随机停留在边界
+            for j=1:D
+                if x(i,j)>ub(j)
+                    if(randi([0,0],1)==0)
+                        x(i,j)=ub(j);
+                        v(i,j)=-v(i,j);
+                    else x(i,j)=lb(j)+(ub(j)-lb(j))*rand;  %随机初始化位置        
+                         v(i,j)=(ub(j)-lb(j))*rand*0.5; 
+                    end              
+                end
+                if x(i,j)<lb(j)
+                    if(randi([0,0],1)==0) 
+                      x(i,j)=lb(j);              
+                      v(i,j)=-v(i,j);
+                    else
+                       x(i,j)=lb(j)+(ub(j)-lb(j))*rand;  %随机初始化位置        
+                       v(i,j)=(ub(j)-lb(j))*rand*0.5; 
+                    end
+                end
+            end
+        else
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+             for j=1:D
+                if x(i,j)>ub(j)%粒子飞出上边界
+                    x(i,j)=x(i,j)-v(i,j);
+                    v(i,j)=rand*(ub(j)-x(i,j));
+                    x(i,j)=x(i,j)+v(i,j);
+                elseif x(i,j)<lb(j)%粒子飞出下边界
+                    x(i,j)=x(i,j)-v(i,j);
+                    v(i,j)=rand*(x(i,j)-lb(j));
+                    x(i,j)=x(i,j)-v(i,j);
+                end
+             end
+        end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
+%------------------每个粒子的目标向量-----------------//第8步///////////////  
+        goals(t,i,:)=fitness(x(i,:),funcname,params);
+%----------------调整自身---------------------------//第10步/////////////////
+        domiRel = DominateRel(pbest(i,:),x(i,:),funcname,params);%x,y的支配关系
+       if domiRel==1%pbest支配新解
+           continue;
+       else 
+            if domiRel==-1%新解支配pbest
+                pbest(i,:) = x(i,:);
+            elseif(randi([0,1],1)==0)%新解与pbest互相不支配
+                pbest(i,:) = x(i,:);
+            end
+%-----------------对NP进行更新和维护-----------------//第9步////////////////
+            faix = GetFai(x(i,:),funcname,params);
+            if faix<=unfitx
+            [NP,NPRule,Dnp] = compare(x(i,:),NP,NPRule,Dnp,Nnp,funcname,params);
+            end
+       end
+    end
+end
+np = NP;%非劣解
+nprule=NPRule;
+dnp = Dnp;%非劣解之间的距离
+r=size(np,1);
+fv=zeros(r,T);
+for i=1:r
+    fv(i,:)=fitness(np(i,:),funcname,params);
+end
+end
+%%%%%%%%%%%%%%%--------------主函数结束--------------%%%%%%%%%%%%%%%%%
+
+function [np_out,nprule_out,dnp_out] = compare(x,np,nprule,dnp,nnp,funcname,params)
+%np:现有非劣解
+%x:需要比较的量
+Nnp = nnp;%非劣解集空间
+r=size(np,1);%非劣解的个数
+np_out=np;%非劣解复本
+nprule_out = nprule;
+dnp_out = dnp;%非劣解集点之间距离
+if r==0
+    return;
+end
+for i=r:-1:1
+    domiRel=DominateRel(x,np(i,:),funcname,params);
+    if domiRel==1 %NP(i)被x支配
+        np_out(i,:)=[];%非劣解剔除该解
+        nprule_out(i,:)=[];
+        dnp_out(i,:)=[];  
+        if ~isempty(dnp_out)
+            dnp_out(:,i)=[];
+        end
+    elseif domiRel==-1 %x被NP(i)支配,返回不再比较
+        return;
+    end
+end
+r1=size(np_out,1);%现有非劣解的行列
+np_out(r1+1,:)=x;%与所有非支配集粒子比较均占优或不可比较，则NP中加入x
+faix = GetFai(x,funcname,params); 
+
+if faix > 0 
+    nprule_out(r1+1,:)=[0,faix,0];
+else
+    nprule_out(r1+1,:)=[0,0,0];
+end
+if r1==0
+    dnp_out=0;
+end
+for j=1:r1
+    dnp_out(r1+1,j)=GetDistance(np_out(j,:),x,funcname,params);
+    dnp_out(j,r1+1)=dnp_out(r1+1,j);
+end
+if r1>=Nnp  %未达到非劣解种群极限
+    %---------移除密集距离最小的一个-------
+     densedis = GetDenseDis(dnp_out);   
+     n_min = find(min(densedis)==densedis);%找出密度距离最小的一个
+     tempIndex = randi([1,length(n_min)],1);  
+     
+    np_out(n_min(tempIndex),:)=[];%非劣解剔除该解 
+    nprule_out(n_min(tempIndex),:)=[];
+    dnp_out(n_min(tempIndex),:)=[];
+    if ~isempty(dnp_out)
+        dnp_out(:,n_min(tempIndex))=[]; 
+    end
+end
+end
+%%%%%%%%%%%%%%-----------将粒子维护到外部种群----------%%%%%%%%%%%%%%%%%
+
+function dis=GetDistance(x,y,funcname,params)
+%求两向量之间的距离
+if(params.istargetdis)
+    gx=fitness(x,funcname);
+    gy=fitness(y,funcname);
+    gxy=(gx-gy).^2;
+    dis=sqrt(sum(gxy(:)));
+else
+    g=x-y;
+    dis=sum(sum(g.^2));
+end
+end
+
+function densedis = GetDenseDis(dnp)
+%密集距离
+[r,c] = size(dnp);
+densedis=zeros(1,r);
+for i=1:r
+    firstmin=Inf;
+    %secondmin=Inf;
+    for j=1:c
+        if dnp(i,j)~=0 && dnp(i,j)<firstmin
+            firstmin = dnp(i,j);
+        end
+       % if dnp(i,j)~=0 && dnp(i,j)~=firstmin && dnp(i,j)<secondmin
+        %    secondmin = dnp(i,j);
+      %  end       
+    end
+   % densedis(i)=(firstmin+secondmin)/2;
+    densedis(i)=firstmin;
+end
+end
+
+function sparedis = GetSpareDis(dnp)
+%稀疏距离
+[r,c] = size(dnp);
+sparedis=zeros(1,r);
+for i=1:r
+    firstmin=Inf;
+    secondmin=Inf;
+    for j=1:c
+        if dnp(i,j)~=0 && dnp(i,j)<firstmin
+            firstmin = dnp(i,j);
+        end
+        if dnp(i,j)~=0 && dnp(i,j)~=firstmin && dnp(i,j)<secondmin
+            secondmin = dnp(i,j);
+        end       
+    end
+    sparedis(i)=(firstmin+secondmin)/2;
+end
+end
+%%%%%%%%%%%%%%%%%-----------密集(稀疏)距离------------%%%%%%%%%%%%%%%%%%%
+
+function v = DominateRel(x,y,funcname,params)
+%判断x与y支配关系,返回1表示x支配y，返回-1表示y支配x,返回0表示互不支配
+v=0;
+faix = GetFai(x,funcname,params);
+faiy = GetFai(y,funcname,params);
+if faix>faiy  
+    v=-1;
+elseif faiy>faix 
+    v=1;
+end
+if v~=0 %x、y构成违反约束支配关系
+    return;
+end
+gx = fitness(x,funcname,params);%x的目标向量
+gy = fitness(y,funcname,params);%y的目标向量
+len = length(gx);
+if sum(gx<=gy)==len%x的所有目标都比y小，x支配y
+    v=1;
+elseif sum(gx>=gy)==len%y的所有目标都比x小，y支配x
+    v=-1;
+end
+end
+%%%%%%%%%%%%%%%%%---------比较两粒子的相互支配关系-----------%%%%%%%%%%%%%
+
+function [gbest,nprule_out] = GetGlobalBest2(x,np,nprule)
+%按照一定原则随机取一个全局最优
+r=size(np,2);%非劣解的行列,r:非劣解集个数，c：维数
+%假定x被非劣解集np支配
+IsDominated=true;
+Mdom=[];%支配x的集合
+for i=1:r
+    domiRel=DominateRel(np(i,:),x,funcname,params);
+    if domiRel==1%np(i)支配x
+        Mdom=[Mdom,i];%记下其在非劣解集中的编号
+    else
+        IsDominated=false;
+        break;
+    end
+end
+nprule_out=nprule;
+if IsDominated%x被支配,从x的支配集中选出一个作为全局最优
+    intem=randi([1,length(Mdom)],1);
+    gbest=np(Mdom(intem),:);nprule_out(Mdom(intem),1)=nprule_out(Mdom(intem),1)+1;
+else%x不被支配，从所有非劣解集中选出一个作为全局最优
+    nr=size(np,1);
+    intem=randi([1,nr],1);
+    gbest=np(intem,:);nprule_out(intem,1)=nprule_out(intem,1)+1;
+end
+end
+
+
+
+function [gbest,nprule_out] = GetGlobalBest(np,nprule,dnp_out)
+%随机取一个全局最优
+r=size(np,1);%非劣解的行列
+nprule_out=nprule;
+intem=1;
+if(randi([0,3],1)==0) 
+    if r==1  
+       gbest = np(1,:);
+   else
+     sparedis = GetSpareDis(dnp_out);
+     %[max1,max2] = find(max(max(dnp_out))==dnp_out);
+     %intem=max1(randi([1,length(max1)],1));
+     n_max=find(max(sparedis)==sparedis);
+     intem=n_max(randi([1,length(n_max)],1));
+     gbest = np(intem,:);     
+    end    
+else 
+  %rr=randi([1,r],1);%随机取一个作为全局最优
+    %gbest = np(rr,:);
+    tt=find(min(nprule(:,1))==nprule(:,1));   
+    intem=tt(randi([1,length(tt)],1)); 
+    gbest = np(intem,:);      
+end
+nprule_out(intem,1)=nprule_out(intem,1)+1;
+end
+%%%%%%%%%%%%%%%%%%%----------从部种群中找到全局最优-------%%%%%%%%%%%%%%%
+
+function  [x,v,pbest,NP,NPRule,Dnp]=ReInit(x,v,pbest,NP,NPRule,Dnp,Nnp,D,lb,ub,unfitx,funcname,params)
+for i=1:10
+    for j=1:D
+        x(i,j)=(ub(j)-lb(j))*rand;  %随机初始化位置        
+        v(i,j)=(ub(j)-lb(j))*rand*0.5; %随机初始化速度
+        pbest(i,j)=x(i,j);
+    end
+end
+
+for i=1:10
+    faix = GetFai(x(i,:),funcname,params);
+    if faix<=unfitx
+      [NP,NPRule,Dnp] = compare(x(i,:),NP,NPRule,Dnp,Nnp,funcname,params);
+    end
+end
+end
+%%%%%%%%%%%%%%%%%%%----------重新初始化部分粒子-------%%%%%%%%%%%%%%%
+
+
+function fv=fitness(x,funcname,params)
+%获得多目标的目标向量 fv
+fv=[];
+switch upper(funcname)   
+%------DTLZ1
+
+%------ZDT1
+    case 'ZDT1'
+        n=length(x);
+        gv=1+9*sum(x(2:n))/(n-1);
+        fv(1)=x(1);
+        fv(2)=gv*(1-sqrt(x(1)/gv));
+%------ZDT2
+    case 'ZDT2'
+        n=length(x);
+        gv=1+9*sum(x(2:n))/(n-1);
+        fv(1)=x(1);
+        fv(2)=gv*(1-(x(1)/gv).^2);
+%------ZDT3
+    case 'ZDT3'
+        n=length(x);
+        gv=1+9*sum(x(2:n).^2)/(n-1);
+        fv(1)=x(1);
+        fv(2)=gv*(1-sqrt(x(1)/gv)-(x(1)/gv)*sin(10*pi*x(1)));
+%------ZDT4
+    case 'ZDT4'
+        n=length(x);
+        gv=1+10*(n-1)+sum(x(2:n).^2-10*cos(4*pi*x(2:n)));
+        fv(1)=x(1);
+        fv(2)=gv*(1-sqrt(x(1)./gv));
+%------ZDT5
+    case 'ZDT5'
+%------ZDT4
+    case 'ZDT6'
+        n=length(x);
+        gv=1+9*(sum(x(2:n))/(n-1)).^0.25;
+        fv(1)=1-exp(-4*x(1))*sin(6*pi*x(1)).^6;
+        fv(2)=gv*(1-(fv(1)/gv).^2);
+%------CTP1
+    case 'CTP1'
+        n=length(x);
+        cx=41+sum(x(2:n).^2-10*cos(2*pi*x(2:n)));
+        fv(1)=x(1);
+        fv(2)=cx*exp(-fv(1)/cx);
+%------CTP2,CTP3,CTP4,CTP5,CTP6,CTP7
+    case {'CTP2','CTP3','CTP4','CTP5','CTP6','CTP7'}
+        n=length(x);
+        cx=41+sum(x(2:n).^2-10*cos(2*pi*x(2:n)));
+        fv(1)=x(1);
+        fv(2)=cx*(1-fv(1)/cx);
+%------CTP8,CONSTR
+    case {'CTP8','CONSTR'}
+        fv(1)=x(1);
+        fv(2)=(1+x(2))/x(1);
+%------CTP9,SRN
+    case {'CTP9','SRN'}
+        fv(1)=(x(1)-2)^2+(x(2)-1)^2+2;
+        fv(2)=9*x(1)-(x(2)-1)^2;
+%------CTP10,TNK,MOP-C4
+    case {'CTP10','TNK','MOP-C4'}
+        fv(1)=x(1);
+        fv(2)=x(2);
+%-------MOP-C1,BNH
+    case {'MOP-C1','BNH'}
+        fv(1)=4*x(1)^2+4*x(2)^2;
+        fv(2)=(x(1)-5)^2+(x(2)-5)^2;
+%------MOP-C2,OSY
+    case {'MOP-C2','OSY'}
+        fv(1)=-(25*(x(1)-2)^2+(x(2)-2)^2+(x(3)-1)^2+(x(4)-4)^2+(x(5)-1)^2);
+        fv(2)=x(1)^2+x(2)^2+x(3)^2+x(4)^2+x(5)^2+x(6)^2;     
+%------MOP-C3
+    case 'MOP-C3'
+        fv(1)=(x(1)-2)^2/2+(x(2)+1)^2/13+3;
+        fv(2)=(x(1)+x(2)-3)^2/175+(2*x(2)-x(1))^2/17-13;
+        fv(3)=(3*x(1)-2*x(2)+4)^2/8+(x(1)-x(2)+1)^2/27+15;
+end
+end
+
+
+function fai = GetFai(x,funcname,params)
+%构造约束函数
+switch upper(funcname)
+%---DTLZ1,...,DTLZ4函数
+    case {'DTLZ1','DTLZ2','DTLZ3','DTLZ4'}
+        fai=0;
+%---ZDT1,...,ZDT6函数
+    case {'ZDT1','ZDT2','ZDT3','ZDT4','ZDT5','ZDT6'}
+        fai=0;
+%------CTP1
+    case 'CTP1'
+        n=length(x);
+        cx=41+sum(x(2:n).^2-10*cos(2*pi*x(2:n)));
+        f1=x(1);        f2=cx*exp(-f1/cx);
+        g1=0.858*exp(-0.541*f1)-f2;
+        g2=0.728*exp(-0.295*f1)-f2;
+        fai=max(g1,0)+max(g2,0);
+%------CTP2,CTP3,CTP4,CTP5,CTP6,CTP7
+    case {'CTP2','CTP3','CTP4','CTP5','CTP6','CTP7'}
+        navars=[-0.2*pi,0.2,10,1,6,1;
+                -0.2*pi,0.1,10,1,0.5,1;
+                -0.05*pi,40,5,1,6,0;                
+                -0.2*pi,0.1,10,2,0.5,1;
+                -0.1*pi,40,0.5,1,2,-2;
+                -0.2*pi,0.75,10,1,0.5,1;];
+        i=str2double(funcname(4))-1;%%选择的是第几个测试函数
+        sita=navars(i,1);a=navars(i,2);b=navars(i,3);
+        c=navars(i,4);d=navars(i,5);e=navars(i,6);
+        n=length(x);
+        cx=41+sum(x(2:n).^2-10*cos(2*pi*x(2:n)));
+        f1=x(1);        f2=cx*(1-f1/cx);
+        g=a*abs(sin(b*pi*(sin(sita)*(f2-e)+cos(sita)*f1)^c))^d-(cos(sita)*(f2-e)-sin(sita)*f1);
+        fai=max(g,0);
+%------CTP8,CONSTR
+    case {'CTP8','CONSTR'}
+        g1=6-x(2)-9*x(1);
+        g2=1+x(2)-9*x(1);
+        fai=max(g1,0)+max(g2,0);
+%------CTP9,SRN
+    case {'CTP9','SRN'}
+        g1=x(1)^2+x(2)^2-255;
+        g2=x(1)-3*x(2)+10;
+        fai=max(g1,0)+max(g2,0);
+%------CTP10,TNK,MOP-C4
+    case {'CTP10','TNK','MOP-C4'}
+        g1=-x(1)^2-x(2)^2+1+0.1*cos(16*atan(x(1)/x(2)));
+        g2=(x(1)-0.5)^2+(x(2)-0.5)^2-0.5;
+        fai=max(g1,0)+max(g2,0);
+%-------MOP-C1,BNH函数
+    case {'MOP-C1','BNH'}
+        g1=(x(1)-5)^2+x(2)^2-25;
+        g2=7.7-(x(1)-8)^2-(x(2)+3);
+        fai=max(g1,0)+max(g2,0);
+%------MOP-C2,OSY函数
+    case {'MOP-C2','OSY'}
+        g1=2-x(1)-x(2);         g2=-6+x(1)+x(2);
+        g3=-2-x(1)+x(2);        g4=-2+x(1)-3*x(2);
+        g5=-4-(x(3)-3)^2+x(4);  g6=4-(x(5)-3)^2-x(6);
+        fai = max(g1,0)+max(g2,0)+max(g3,0)+max(g4,0)+max(g5,0)+max(g6,0);
+%------MOP-C3
+    case 'MOP-C3'
+        g1=x(2)+4*x(1)-4;
+        g2=x(1)-x(2)-2;
+        fai = max(g1,0)+max(g2,0);
+end
+end
+
+
+function fvout=GetLeastFunctionValue(fvin)
+%将外部种群中的非支配集剔除
+fvout=fvin;
+n=size(fvout,1);
+i=1;
+while(i<=n)
+    j=i+1;
+    isdominated=false;
+    while(j<=n)
+        a=fvout(i,:);b=fvout(j,:);
+        if((a(1)<b(1)&&a(2)<=b(2))||(a(1)<=b(1)&&a(2)<b(2)))
+            fvout(j,:)=[];n=n-1;
+        else
+            if((b(1)<a(1)&&b(2)<=a(2))||(b(1)<=a(1)&&b(2)<a(2)))
+                isdominated=true;
+            end
+            j=j+1;
+        end
+    end
+    if isdominated
+        fvout(i,:)=[];n=n-1;
+    else
+        i=i+1;
+    end
+end
+end
+
+function [SP,SP1,MS,GD,GD2]=GetEvaluDis(funcname,NP,stdfv)
+%计算所有评价指标的值
+if(iscell(NP))
+    n=length(NP);
+    SP=Inf*ones(1,n);
+    SP1=Inf*ones(1,n);
+    MS=Inf*ones(1,n);
+    GD=Inf*ones(1,n);
+    GD2=Inf*ones(1,n);
+    for i=1:n
+        np=cell2mat(NP(i));
+        [sp,sp1]=Spacing(funcname,np);
+        ms=MaximumSpread(funcname,np);
+        gd=GenerationalDistance(funcname,np,stdfv);
+        gd2=GenerationalDistance2(funcname,np);
+        SP(i)=sp;
+        SP1(i)=sp1;
+        MS(i)=ms;
+        GD(i)=gd;
+        GD2(i)=gd2;
+    end
+else
+    [SP,SP1]=Spacing(funcname,NP);
+    MS=MaximumSpread(funcname,NP);
+    GD=GenerationalDistance(funcname,NP,stdfv);
+    GD2=GenerationalDistance2(funcname,NP);
+end
+end
+
+function [SP,SP1]=Spacing(funcname,np)
+%分散性(Spacing,SP)
+n=size(np,1);
+m=size(fitness(np(1,:),funcname),2);
+f=zeros(n,m);
+for i=1:n
+    f(i,:)=fitness(np(i,:),funcname);
+end
+n=size(f,1);%n:解的个数；
+dd=ones(1,n)*Inf;d=zeros(1,n);
+for i=1:n
+    k=0;
+    for j=1:n
+        if j==i
+            continue;
+        end
+        k=k+1;
+        dd(i,k)=sum(abs(f(i,:)-f(j,:)));
+    end
+    d(i)=min(dd(i,:));
+end
+daver=mean(d);
+SP=sqrt(sum((d-daver).^2)/n);
+SP1=sqrt(sum((d-daver).^2)/(n-1))/daver;
+end
+
+function D=MaximumSpread(funcname,np)
+%最大散布范围(Maximum Spread,MS)
+n=size(np,1);
+m=size(fitness(np(1,:),funcname),2);
+f=zeros(n,m);
+if(n==1)
+    D=0;
+    return;
+end
+for i=1:n
+    f(i,:)=fitness(np(i,:),funcname);
+end
+fmax=Inf*ones(1,m);
+fmin=-Inf*ones(1,m);
+switch upper(funcname)
+%------ZDT1,'ZDT2',ZDT4
+    case {'ZDT1','ZDT2','ZDT4'}
+        fmax=[1,1;];
+        fmin=[0,0;];
+%------ZDT3
+    case 'ZDT3'
+        fmax=[0.851701065645526,1];
+        fmin=[0,-0.761625883165305];
+%------ZDT6
+    case 'ZDT6'
+        fmax=[1,0.921164494015440];
+        fmin=[0.280776612246391,0];    
+    case 'CTP1'
+        fmax=[1,1];
+        fmin=[0,0.542143003351532];
+    case 'CTP2'
+        fmax=[0.985582138027326,1];
+        fmin=[0,0.287445806007632];        
+    case 'CTP3'
+        fmax=[0.971176296100037,1];
+        fmin=[0,0.295146218332835];        
+    case 'CTP4'
+        fmax=[1,1.044724051472542];
+        fmin=[0,0]; 
+    case 'CTP5'
+    case 'CTP6'
+    case 'CTP7'
+    case {'CTP8','CONSTR'}    
+    case {'CTP9','SRN'}        
+    case {'CTP10','TNK','MOP-C4'}
+        fmax=[1.040613239483717,1.038423685560876];
+        fmin=[0.043784286711173,0.045003454162621]; 
+    case {'MOP-C2','OSY'}
+        fmax=[-39.927885357643362,76.394162538483897];
+        fmin=[-273.9620707900613,4.0370929599649];         
+end
+fimax=min([max(f);fmax]);
+fimin=max([min(f);fmin]);
+fimin=min([fimax;fimin]);
+D=sqrt(sum((fimax-fimin)./(fmax-fmin))/m);
+end
+
+function GD=GenerationalDistance(funcname,np,stdfv)
+%世代距离GD
+n=size(np,1);
+m=size(fitness(np(1,:),funcname),2);
+f=zeros(n,m);
+if(n==1)
+    GD=0;
+    return;
+end
+for i=1:n
+    f(i,:)=fitness(np(i,:),funcname);
+end
+n=size(f,1);%n:解的个数；
+d=zeros(1,n);
+for i=1:n
+    d(i)=GetTrueDis(funcname,f(i,:),stdfv);
+end
+GD=sqrt(sum(d.^2))/n;
+end
+
+function d=GetTrueDis(funcname,fv,stdfv)
+%点到真实Pareto前沿的距离
+x0=fv(1);y0=fv(2);
+dd=zeros(1,1001);
+switch upper(funcname)
+%------ZDT1,ZDT4
+    case {'ZDT1','ZDT4'}
+         x1=(1-y0)^2;
+         for i=1:1001
+            x=x0+(x1-x0)/1000*(i-1);
+            y=1-sqrt(x);
+            dd(i)=sqrt((x-x0)^2+(y-y0)^2);
+         end
+%------ZDT2
+    case {'ZDT2','ZDT6'}
+         if(y0>0.921164494015440)
+            x1=0.280776612246391;
+         else
+            x1=sqrt(1-y0);
+         end
+         for i=1:1001
+            x=x0+(x1-x0)/1000*(i-1);
+            y=1-x^2;
+            dd(i)=sqrt((x-x0)^2+(y-y0)^2);
+         end
+%------ZDT3
+    case 'ZDT3'
+        x1=fzero(@(x)(1-sqrt(x)-x*sin(10*pi*x)-y0),x0);
+        if(isnan(x1))
+            x1=x0;
+        end
+        for i=1:1001
+           x=x0+(x1-x0)/1000*(i-1);
+           y=1-sqrt(x)-x*sin(10*pi*x);
+           dd(i)=sqrt((x-x0)^2+(y-y0)^2);
+        end        
+    case {'CTP1','CTP2','CTP3','CTP4','CTP5','CTP6','CTP7','CTP8','CONSTR','CTP9','SRN','CTP10','TNK','MOP-C4','MOP-C1','BNH','MOP-C2','OSY'}
+        fvin = stdfv;
+        fvin(:,1) = fvin(:,1)-x0;
+        fvin(:,2) = fvin(:,2)-y0;
+        dd = sqrt(sum(fvin.^2,2));        
+end
+d=min(dd);
+end
+
+
+function GD=GenerationalDistance2(funcname,np)
+%世代距离GD(七点法)
+n=size(np,1);
+m=size(fitness(np(1,:),funcname),2);
+f=zeros(n,m);
+if(n==1)
+    GD=0;
+    return;
+end
+for i=1:n
+    f(i,:)=fitness(np(i,:),funcname);
+end
+[n,k]=size(f);%n:解的个数；k:解的维数；
+fmax = max(f);
+d=zeros(1,n);
+for i=1:n
+    d(i)=GetSchottDis(fmax,k,f(i,:));
+end
+GD=sqrt(sum(d.^2))/n;
+end
+
+function d = GetSchottDis(fmax,k,x)
+xmin = zeros(1,k);
+ds = sqrt(sum((x-xmin).^2));%到(0,0,...,0)点的距离；
+for i=1:k
+    xk1=x;xk1(i)=xk1(i)-fmax(i)/3;ds=ds+sqrt(sum((xk1-xmin).^2));%到(0,0,...,fi/3,...,0)点的距离；
+    xk2=x;xk2(i)=xk2(i)-2*fmax(i)/3;ds=ds+sqrt(sum((xk2-xmin).^2));%到(0,0,...,2fi/3,...,0)点的距离；
+    xk3=x;xk3(i)=xk3(i)-fmax(i);ds=ds+sqrt(sum((xk3-xmin).^2));%到(0,0,...,fi,...,0)点的距离；
+end
+d=ds/(k+1);%x到这(k+1)个点的距离的平均值
+end

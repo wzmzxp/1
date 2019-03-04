@@ -1,7 +1,7 @@
-clear all
+function result0 =F11()
+global r lamada lamada_cita n_cita lamada_fai n_fai h0 D type
+r=5;lamada=0.05;lamada_cita=lamada;n=30;n_cita=n;lamada_fai=lamada;n_fai=n;h0=0.158;
 
-global r lamada lamada_cita n_cita lamada_fai n_fai h0 D
-r=5;lamada=0.05;lamada_cita=lamada;n=30;n_cita=n;lamada_fai=lamada;n_fai=n;h0=0.158;D=1;
 [a,GAB1 ]=UAB(1,1);
 [a,UEL1]=UEL(1,1);%+
 [a,ULW1]=ULW(1,1);
@@ -20,8 +20,15 @@ end
 % temp=0;
 for i=1:6
     for j=1:6
+        if type=='ULW'
         [X(i,j),a]=ULW(x(i),y(j));
-        
+        end
+        if type=='UAB'
+        [X(i,j),a]=UAB(x(i),y(j));
+        end
+         if type=='UEL'
+        [X(i,j),a]=UEL(x(i),y(j));
+        end
     end
 end
 coef=a;
