@@ -7,8 +7,12 @@ TG1=10;
 temp1=[];
 for i=1:size(p1_index,2)-1
     %生成0-TG1内的随机数a
-    a=(TG1-temp)*rand(1)
-    temp=temp+a; 
+    
+    a=floor((TG1-temp)*rand(1));
+    if a>TG1/2
+        a=floor(a/2);
+    end
+    temp=temp+a;
     temp1=[temp1,a];
 end
 temp1=[temp1,TG1-temp];
