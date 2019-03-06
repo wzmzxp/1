@@ -1,18 +1,18 @@
-function [path,shortlen]=GreedTsp(C,first)
+function [path,shortlen]=GreedTsp(D,first)
 %first起始点的序号
-n=size(C,1);%n表示问题的规模（城市个数）
+n=size(D,1);%n表示问题的规模（城市个数）
 path=zeros(1,n);
-D=zeros(n,n);%D表示完全图的赋权邻接矩阵
-    for i=1:n
-       for j=1:n
-         if i~=j
-            D(i,j)=((C(i,1)-C(j,1))^2+(C(i,2)-C(j,2))^2)^0.5;
-         else
-            D(i,j)=eps;                                          % i = j 时不计算，应该为0，但后面的启发因子要取倒数，用eps（浮点相对精度）表示
-         end
-          D(j,i)=D(i,j);                                        %对称矩阵
-     end
-    end
+% D=zeros(n,n);%D表示完全图的赋权邻接矩阵
+%     for i=1:n
+%        for j=1:n
+%          if i~=j
+%             D(i,j)=((C(i,1)-C(j,1))^2+(C(i,2)-C(j,2))^2)^0.5;
+%          else
+%             D(i,j)=eps;                                          % i = j 时不计算，应该为0，但后面的启发因子要取倒数，用eps（浮点相对精度）表示
+%          end
+%           D(j,i)=D(i,j);                                        %对称矩阵
+%      end
+%     end
 
     path(1)=first;
     shortlen=0;

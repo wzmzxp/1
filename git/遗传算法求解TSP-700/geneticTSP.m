@@ -8,9 +8,20 @@
       
 
 function [R,Rlength]=geneticTSP(D,a,n,C,m,Pc,Pm)
+        global greedy
         [N,NN]=size(D);%(31*31)
         farm=zeros(n,N);%用于存储种群
-        for i=1:n
+%         for i=1:n
+%             farm(i,:)=randperm(N);%随机生成初始种群
+%         end
+for i=1:31
+    if rand()>0.8
+    farm(i,:)=GreedTsp(D,i);%随机生成初始种群
+    else
+        farm(i,:)=randperm(N);
+    end
+end
+for i=31:n
             farm(i,:)=randperm(N);%随机生成初始种群
         end
         R=farm(1,:);%一个随机解(个体)
@@ -78,6 +89,7 @@ function [R,Rlength]=geneticTSP(D,a,n,C,m,Pc,Pm)
                             A=FARM(i,:);
                             B=FARM(i+1,:);
                             [A,B]=intercross(A,B);
+                            
                             FARM(i,:)=A;
                             FARM(i+1,:)=B;
                        end  
@@ -86,8 +98,17 @@ function [R,Rlength]=geneticTSP(D,a,n,C,m,Pc,Pm)
               %交叉检验  (可省去)             
                for i=1:aa
                    if myLength(D,FARM(i,:))>myLength(D,FARM2(i,:))
-                       FARM(i,:)=FARM2(i,:);
-                   end
+                       if rand()>greedy
+                          
+                           [t1,t2]=GreedTsp(D,FARM2(i,1));
+                           if t2<myLength(D,FARM2(i,:))
+                            FARM(i,:)=t1;
+                           end
+                           
+                       else
+                           FARM(i,:)=FARM2(i,:);
+                       end
+                     end
                end
                clear FARM2
       
