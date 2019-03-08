@@ -15,7 +15,11 @@ function [R,Rlength]=geneticTSP(D,a,n,C,m,Pc,Pm)
 %             farm(i,:)=randperm(N);%随机生成初始种群
 %         end
 for i=1:31
+    if rand()>0.8
     farm(i,:)=GreedTsp(D,i);%随机生成初始种群
+    else
+        farm(i,:)=randperm(N);
+    end
 end
 for i=31:n
             farm(i,:)=randperm(N);%随机生成初始种群
@@ -97,8 +101,10 @@ for i=31:n
                        if rand()>greedy
                           
                            [t1,t2]=GreedTsp(D,FARM2(i,1));
-                           if t2<
-                           FARM(i,:)=GreedTsp(D,FARM2(i,1));
+                           if t2<myLength(D,FARM2(i,:))
+                            FARM(i,:)=t1;
+                           end
+                           
                        else
                            FARM(i,:)=FARM2(i,:);
                        end
