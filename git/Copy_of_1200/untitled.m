@@ -1,10 +1,10 @@
 clear all
 global n b jifenk Ck Cp Cf Tk Tp Tf
 global N h up uf
-h=10;
+h=792;
 n=6027.639;b=2.196;
-N=10;
-up=544;
+N=4;
+up=432;
 Ck=25; Cp=100; Cf=1500;
 Tk=0.2; Tp=4; Tf=8;
 uf=100;
