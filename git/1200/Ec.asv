@@ -1,0 +1,11 @@
+function [outputArg1,outputArg2] = Ec(h1,up1)
+global N h up Ck Cp Cf
+h=h1;up=up1;
+for i=1:N
+    a1=(k-1)*Ck+Cp;
+    Ppk1=Ppk(k*h+up,k*h);
+    a2=(k-1)*Ck+Cf;
+    Pfk1=Pfk(k*h,(k-1)*h);
+end
+end
+

@@ -1,0 +1,8 @@
+function [outputArg1] = E(h,k)
+   a1=k*h;
+   a2=R((k-1)*h);
+   a3=1-R(k*h)/a2;
+   a4=integral(@jifen,0,pi)
+   outputArg1=a1*a3;
+end
+
