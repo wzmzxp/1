@@ -1,4 +1,4 @@
-%SY0707348宗满意 遗传算法求解TSP问题
+% 遗传算法求解TSP问题
 %D是距离矩阵，n为种群个数
 %参数a是中国31个城市的坐标(初始给定)
 %C为停止代数，遗传到第 C代时程序停止,C的具体取值视问题的规模和耗费的时间而定
@@ -15,7 +15,7 @@ function [R,Rlength]=geneticTSP(D,a,n,C,m,Pc,Pm)
 %             farm(i,:)=randperm(N);%随机生成初始种群
 %         end
 for i=1:31
-    if rand()>0.8
+    if rand()>greedy
     farm(i,:)=GreedTsp(D,i);%随机生成初始种群
     else
         farm(i,:)=randperm(N);
@@ -36,8 +36,8 @@ for i=31:n
        pause(1)
 %输出随机的解得路径和总距离
        disp('初始种群中的一个随机值:')
-       R
-       Rlength=myLength(D,R)
+%        R
+       Rlength=myLength(D,R);
        disp('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 %计算各个个体总距离和适配置      
                            %farm(1,:)=R;
@@ -170,7 +170,7 @@ for i=31:n
         disp('迭代次数c');        
         disp(C);
         disp('迭代后结果'); 
-        R
-        Rlength=myLength(D,R)%结果输出
+%         R
+        Rlength=myLength(D,R);%结果输出
         figure
-        plot(CC,RR,CC,RV)  %最短路径长度、平均路径长度随进化代数的变化图
+        plot(CC,RR,CC,RV) ; %最短路径长度、平均路径长度随进化代数的变化图

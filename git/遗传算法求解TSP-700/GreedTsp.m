@@ -41,9 +41,9 @@ path=zeros(1,n);
         path(i+1)=rowminloc;
         shortlen=shortlen+rowmin;
     end
-    pathlen=length(path);D
-    path(pathlen)
-    D(path(pathlen),1)
+    pathlen=length(path);
+    path(pathlen);
+    D(path(pathlen),1);
   shortlen=shortlen+D(path(pathlen),2);
     
     %path;

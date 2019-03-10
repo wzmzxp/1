@@ -1,4 +1,29 @@
 clear all
+<<<<<<< HEAD
+t=100;
+z=15;
+d=5;
+[X,Y]=meshgrid(-200:d:200,0:d:300)
+for i=1:size(X,1)
+    for j=1:size(X,2)
+        Z(i,j)=C(X(i,j),Y(i,j),z,t);
+    end
+end
+mesh(X,Y,Z)
+
+
+
+global  x y z
+[X,Y]=meshgrid(-200:d:200,0:d:300);
+for i=1:size(X,1)
+    for j=1:size(X,2)
+        x=X(i,j);y=Y(i,j);z=15;
+        Z(i,j)=quad(@jifen,0,100);
+    end
+end
+mesh(X,Y,Z)
+r
+=======
 % sigmax=0;sigmay=0;sigmaz=0;H=106.3227-101.0689*exp(-0.0763*4)
 t=180;Q=8000;
 % a1=Q/(power(2*pi,3/2)*sigmax*sigmay*sigmaz)
@@ -23,3 +48,4 @@ mesh(Q,H,Z)
 % x=0.72;y=0.93;z=0.8;
 % r=quad(@jifen,0,100);
 % r
+>>>>>>> 50bdf56daa6ee16ee69d89b24b35d3dfe9ca35f6

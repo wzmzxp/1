@@ -6,7 +6,7 @@
 %交叉概率Pc，变异概率Pm 
 %R为最短路径,Rlength为路径长度
 
-%目前zzyang得到的最优解为：1.6179e+004
+%目前得到的最优解为：1.6179e+004
 
 function GA
 global greedy
