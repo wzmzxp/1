@@ -16,6 +16,8 @@ h=h1;up=up1;
 %    
 % end
 %  outputArg1=fenzi/fenmu;
-outputArg1=Ec(h1,up1)/Et(h1,up1);
+a=Ec(h1,up1)
+% b=Et(h1,up1);
+outputArg1=a;
 end
 

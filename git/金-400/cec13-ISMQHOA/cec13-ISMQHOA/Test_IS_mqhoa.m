@@ -6,7 +6,7 @@ Xmin=-100;
 Xmax=100;
 pop_size=20;
 iter_max=20000;
-runs=1;
+runs=2;
 fhd=str2func('cec13_func'); 
   gbestv=zeros(28,runs);
   tic
@@ -16,7 +16,7 @@ for i=1:28
   
     for j=1:runs
         i,j,
-%         mqhao_with_subgroup1(Dimension,Particle_Number,g,gr,Max_Gen,VRmin,VRmax,varargin)
+       
         [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
 %         xbest(i,:)=gbest;
         fbest(i,j)=gbestval;
