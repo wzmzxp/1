@@ -18,9 +18,9 @@ for k=1:N
 end
 outputArg1=1-fenzi/fenmu;
 outputArg1=-outputArg1;
-if(outputArg1-A0)<0
-    outputArg1=outputArg1+abs(outputArg1-0.9)
-end
+% if(outputArg1-A0)<0
+%     outputArg1=outputArg1+power(abs(outputArg1-0.9),2);
+% end
 % if(up-uf)<0
 %     outputArg1=outputArg1+abspower(up-uf);
 % end

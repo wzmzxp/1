@@ -5,7 +5,7 @@ clear;
 close all;
 clear all
 global n b jifenk Ck Cp Cf Tk Tp Tf
-global N h up uf
+global N h up uf VarMin1 VarMax1 VarMin VarMax
 % h=792;
 n=6027.639;b=2.196;
 N=6;
@@ -21,10 +21,10 @@ nVar=2;             % Number of Decision Variables
 
 VarSize=[1 nVar];   % Size of Decision Variables Matrix
 
-VarMin1=0;          % Lower Bound of Variables
+VarMin1=100;          % Lower Bound of Variables
 VarMax1=1000;          % Upper Bound of Variables
 
-VarMin=0;
+VarMin=100;
 VarMax=1000;
 % Number of Objective Functions
 x=unifrnd(VarMin,VarMax,1);
@@ -103,7 +103,14 @@ for it=1:MaxIt
         
     end
     popc=popc(:);
-    
+    if(it==3)
+        for i=1:size(popc)
+            if (popc(i).Position<0)
+                break;
+            end
+        end
+        
+    end
     % Mutation
     popm=repmat(empty_individual,nMutation,1);
     for k=1:nMutation
@@ -116,13 +123,28 @@ for it=1:MaxIt
         popm(k).Cost=CostFunction(popm(k).Position);
         
     end
-    
+    if(it==3)
+        for i=1:size(popm)
+            if (popm(i).Position<0)
+                break;
+            end
+        end
+        
+    end
     % Merge
     pop=[pop
          popc
          popm]; %#ok
-     
+     if(it==3)
+         for i=1:size(pop)
+             if (pop(i).Position<0)
+                 break;
+             end
+         end
+         
+     end
     % Non-Dominated Sorting
+    
     [pop, F]=NonDominatedSorting(pop);
 
     % Calculate Crowding Distance

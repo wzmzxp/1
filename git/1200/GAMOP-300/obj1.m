@@ -16,7 +16,11 @@ h=h1;up=up1;
 %    
 % end
 %  outputArg1=fenzi/fenmu;
-a=Ec(h1,up1)
+a=Ec(h1,up1);
+if ~isreal(a)
+    disp(['x1',h1,'x2',up1]);
+    disp('111111111---------------------------------------------------');
+end
 % b=Et(h1,up1);
 outputArg1=a;
 end

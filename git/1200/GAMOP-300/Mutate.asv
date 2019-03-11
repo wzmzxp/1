@@ -1,7 +1,7 @@
 
 
 function y=Mutate(x,mu,sigma)
-global VarMin VarMax
+global VarMin
     nVar=numel(x);
     
     nMu=ceil(mu*nVar);
@@ -15,7 +15,7 @@ global VarMin VarMax
     
     y(j)=x(j)+sigma.*randn(size(j));
      if y(j)<0
-        y(j)= unifrnd(VarMin,VarMax,1);
+        y1= unifrnd(VarMin,VarMax,1);
     end
 %     if y2<0
 %         y2= unifrnd(VarMin1,VarMax1,1);

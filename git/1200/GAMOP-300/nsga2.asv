@@ -12,7 +12,7 @@ N=6;
 % up=544;
 Ck=25; Cp=100; Cf=1500;
 Tk=0.2; Tp=4; Tf=8;
-uf=432;
+% uf=432;
 %% Problem Definition
 
 CostFunction=@(x) MOP2(x);      % Cost Function
@@ -21,11 +21,11 @@ nVar=2;             % Number of Decision Variables
 
 VarSize=[1 nVar];   % Size of Decision Variables Matrix
 
-VarMin=0;          % Lower Bound of Variables
-VarMax=1000;          % Upper Bound of Variables
+VarMin1=0;          % Lower Bound of Variables
+VarMax1=1000;          % Upper Bound of Variables
 
-VarMin1=100;
-VarMax1=5338;
+VarMin=0;
+VarMax=1000;
 % Number of Objective Functions
 x=unifrnd(VarMin,VarMax,1);
 x2=unifrnd(VarMin1,VarMax1,[1,nVar-1]);
@@ -86,6 +86,7 @@ F2=[empty_individual];
 for it=1:MaxIt
     
     % Crossover
+    
     popc=repmat(empty_individual,nCrossover/2,2);
     for k=1:nCrossover/2
         
@@ -122,6 +123,7 @@ for it=1:MaxIt
          popm]; %#ok
      
     % Non-Dominated Sorting
+    
     [pop, F]=NonDominatedSorting(pop);
 
     % Calculate Crowding Distance
@@ -154,7 +156,9 @@ for it=1:MaxIt
     figure(1);
     PlotCosts(F1);
     pause(0.01);
-    
+%     if  it==3
+%         break;
+%     end
 end
 
 %% Results
