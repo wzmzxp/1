@@ -10,7 +10,7 @@ global N h up uf VarMin1 VarMax1 VarMin VarMax
 n=6027.639;b=2.196;
 N=6;
 % up=544;
-Ck=25; Cp=100; Cf=1500;
+Ck=50; Cp=100; Cf=1500;
 Tk=0.2; Tp=4; Tf=8;
 % uf=432;
 %% Problem Definition
@@ -35,7 +35,10 @@ nObj=numel(CostFunction([x,x2]));
 %% NSGA-II Parameters
 
 MaxIt=50;      % Maximum Number of Iterations
-
+MaxIts1=[100000];
+MaxIts2=[100000];
+MaxIts11=[];
+MaxIts21=[];
 nPop=100;        % Population Size
 
 pCrossover=0.7;                         % Crossover Percentage
@@ -170,6 +173,7 @@ for it=1:MaxIt
     t=size(F1);
     F1=reshape(F1,1,t(1));
     F2=[F2 F1];
+    
     % Show Iteration Information
     disp(['Iteration ' num2str(it) ': Number of F1 Members = ' num2str(numel(F1))]);
     
@@ -180,20 +184,46 @@ for it=1:MaxIt
 %     if  it==3
 %         break;
 %     end
+    for i=2:size(F2,2)
+        MaxIts1(i)=F2(i).Cost(1);
+        MaxIts2(i)=F2(i).Cost(2);
+    end
+    Maxlts11(it)=min(MaxIts1);
+    Maxlts21(it)=min(MaxIts2);
+%     a(1:4891)=[F2(1:end).Cost(1)]
 end
+figure(2)
+plot([1:MaxIt],Maxlts11);
+figure(3)
+plot([1:MaxIt],Maxlts21);
+
 
 %% Results
-% t=size(F2);
-% index=[];
-% for i3=2:t(2)
-%     if F2(i3).Cost(2)<=2
-%         index=[index,F2(i3)];
-%     end
-% end
-% index1=[];
-% t1=size(index);
-% for i4=2:t1(2)
-%     if index(i4).Cost(2)<=0.08
-%         index1=[index1,index(i4)];
-%     end
-% end
+t=size(F2);
+index=[];
+for i3=2:t(2)
+    if F2(i3).Cost(1)>=500 && F2(i3).Cost(1)<=600
+        index=[index,F2(i3)];
+    end
+end
+index1=[];
+t1=size(index);
+for i4=2:t1(2)
+    if -index(i4).Cost(2)>=0.9 && -index(i4).Cost(2)<=0.9999
+        index1=[index1,index(i4)];
+    end
+end
+index2=[];
+t1=size(index1);
+for i4=2:t1(2)
+    if index1(i4).Position(1)>=100 && index1(i4).Position(1)<=900
+        index2=[index2,index1(i4)];
+    end
+end
+index3=[];
+t1=size(index2);
+for i4=2:t1(2)
+    if index2(i4).Position(2)>=300 && index2(i4).Position(2)<900
+        index3=[index3,index2(i4)];
+    end
+end
