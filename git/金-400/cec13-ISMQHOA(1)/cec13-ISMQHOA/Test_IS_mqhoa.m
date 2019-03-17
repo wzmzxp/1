@@ -16,8 +16,9 @@ for i=1:28
   
     for j=1:runs
         i,j,
+        [gbest,gbestval,FES]= mqhao_GI(fhd,D,10,4,4000,Xmin,Xmax,func_num);
 %         mqhao_with_subgroup1(Dimension,Particle_Number,g,gr,Max_Gen,VRmin,VRmax,varargin)
-        [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
+%         [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
 %         xbest(i,:)=gbest;
         fbest(i,j)=gbestval;
         fbest(i,j)

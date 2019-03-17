@@ -1,16 +1,13 @@
-clear all
+function fun()
+% clear all
 global n b jifenk Ck Cp Cf Tk Tp Tf
 global N h up uf
-% 11.9021  337.1226
-
-h=792;
-% h=11.9021;
-n=6027.639;b=2.196;
-N=5;
-up=544;
-% up=337.1226;
-Ck=25; Cp=100; Cf=1500;
-Tk=0.2; Tp=4; Tf=8;
+% h=792;
+% n=6027.639;b=2.196;
+% N=6;
+% up=544;
+% Ck=25; Cp=100; Cf=1500;
+% Tk=0.2; Tp=4; Tf=8;
 % uf=432;
 % jifenk=1000;
 % k=1000;

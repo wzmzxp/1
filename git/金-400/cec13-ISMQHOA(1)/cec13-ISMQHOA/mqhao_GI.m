@@ -1,4 +1,4 @@
-function [gbest,gbestval,C,fitcount]= mqhao_with_subgroup1(Dimension,Particle_Number,g,gr,Max_Gen,VRmin,VRmax,varargin)
+function [gbest,gbestval,C,fitcount]= mqhao_with_subgroup1(fhd,Dimension,Particle_Number,g,gr,Max_Gen,VRmin,VRmax,varargin)
 %对种群进行分组进化比对
 
 DIM=Dimension;
@@ -14,7 +14,7 @@ group=g;
 gr=gr;%每组数目
 % groupNum=gr*group;
 optimalNum=gr*group;%k值的大小
-
+groupNum=optimalNum;
 %------参数定义区域结束------
 %------多次重复计算所需参数------
 gbestV=zeros(1,repeat); 
@@ -24,9 +24,13 @@ tot_time1 = zeros(1,repeat);
 alfa=0.5;
 
 %------多次重复计算------
+% funcV(k)=feval(func,optimalSolution(:,k),varargin{:})-fopt(varargin{:});%func(id,optimalSolution(:,k),DIM);
+%        
 
 for kk=1:repeat
     tic;
+    
+    
     %------参数初始化区域开始------
     funcV=zeros(1,optimalNum);  %定义保存k个采样点的函数值，初始化为0
     samplePos=zeros(optimalNum,DIM);%采样点矩阵
@@ -43,7 +47,7 @@ for kk=1:repeat
         VRmin=repmat(minDomain,ceil(alfa*optimalNum),DIM);
     VRmax=repmat(maxDomain,ceil(alfa*optimalNum),DIM);
     for k=1:optimalNum  %求最优解函数值
-        funcV(k)=func(optimalSolution(k,:),DIM,varargin{:});
+        funcV(k)=funcV(optimalSolution(k,:),DIM,varargin{:});
         
     end
     C(w)=min(funcV);
@@ -64,6 +68,10 @@ for kk=1:repeat
     mea=first_prefix_optimalSolution_mean;
 %     covv=cov(prefix_optimalSolution);
 %     covv=diag(covv);
+    for k=1:groupNum 
+        funcV(k)=feval(fhd,optimalSolution(:,k),varargin{:})-fopt(varargin{:});%func(id,optimalSolution(:,k),DIM);
+       
+    end
     while w<=maxFE   % M iteration begin
         while w<=maxFE  %QHO iteration begin
             while w<=maxFE
@@ -87,7 +95,7 @@ samplePos=(samplePos>VRmax).*VRmax+(samplePos<=VRmax).*samplePos;
                         samplePos=(samplePos<VRmin).*VRmin+(samplePos>=VRmin).*samplePos;
                         %分组计算
                         for i=1:ceil(alfa*group*gr)
-                            sampleValue=func(samplePos(i,:),DIM,varargin{:});%求第i个采样点的函数值
+                            sampleValue=funcV(samplePos(i,:),DIM,varargin{:});%求第i个采样点的函数值
                             w=w+1;
                             C(w)=min(funcV);
 %                             if sampleValue<funcV((((g-1)*gr+i))) %如果采样点值小于当前点函数值，则替换,
@@ -120,7 +128,7 @@ samplePos=(samplePos>VRmax).*VRmax+(samplePos<=VRmax).*samplePos;
             nom=sum(nm,1);
             [v_max,index_max]=max(funcV);%取得最大值的序号index_max
             optimalSolution(index_max,:)=nom;%用平均坐标替换最大值对应坐标
-            funcV(index_max)=func(nom,DIM,varargin{:});%
+            funcV(index_max)=funcV(nom,DIM,varargin{:});%
             w=w+1;
             C(w)=min(funcV);
             stdPre=std(optimalSolution,1,1);  %新解标准差
@@ -149,6 +157,7 @@ samplePos=(samplePos>VRmax).*VRmax+(samplePos<=VRmax).*samplePos;
        
 %         mea=mean(prefix_optimalSolution,1);
 %         covv=diag(covv);
+        funcV(index_max)=feval(fhd,meanPos,varargin{:})-fopt(varargin{:});
         if w>maxFE
             break;
         end

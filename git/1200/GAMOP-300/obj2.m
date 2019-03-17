@@ -17,7 +17,7 @@ for k=1:N
      fenmu=fenmu+a3;
 end
 outputArg1=1-fenzi/fenmu;
-outputArg1=-outputArg1;
+outputArg1=-1*outputArg1;
 % if(outputArg1-A0)<0
 %     outputArg1=outputArg1+power(abs(outputArg1-0.9),2);
 % end
