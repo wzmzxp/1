@@ -5,10 +5,10 @@ D=10;
 Xmin=-100;
 Xmax=100;
 pop_size=20;
-group=10;
-gr=2;
+group=1;
+gr=40;
 iter_max=20000;
-runs=51;
+runs=1;
 fhd=str2func('cec13_func'); 
   gbestv=zeros(28,runs);
   tic
@@ -18,7 +18,7 @@ for i=1:28
   
     for j=1:runs
         i,j,
-          [gbest,gbestval,Convergence,FES]= mqhao_GI(fhd,D,pop_size,group,gr,iter_max,Xmin(i),Xmax(i),func_num);
+          [gbest,gbestval,Convergence,FES]= mqhao_GI1(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax,func_num);
                 
 %         [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
 %         xbest(i,:)=gbest;
