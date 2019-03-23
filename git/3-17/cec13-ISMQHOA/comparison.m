@@ -42,7 +42,8 @@ for Algnum=[1];  %选取使用的测试算法(上表)
         for j=1:runs %j为设置的循环次数
             if Algnum==1
 %                                                                          mqhao_with_subgroup1(Dimension,Particle_Number,g,gr,Max_Gen,VRmin,VRmax,varargin)
-a=feval(fhd,[1 3 4 5 6]',1);
+        a=feval(fhd,zeros(30,1),1);
+
                 [gbest,gbestval,Convergence,FES]= mqhao_GI(fhd,D,pop_size,group,gr,iter_max,Xmin(i),Xmax(i),func_num);
                 
             end

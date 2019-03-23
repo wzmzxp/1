@@ -47,10 +47,11 @@ for kk=1:repeat
 %         funcV(k)=func(optimalSolution(k,:),DIM,varargin{:});
 %         
 %     end
- for k=1:optimalNum 
-        funcV(k)=feval(fhd,optimalSolution(k,:)',varargin{:})-fopt(varargin{:});%func(id,optimalSolution(:,k),DIM);
-       
-    end
+%  for k=1:optimalNum 
+%         funcV(k)=feval(fhd,optimalSolution(k,:)',varargin{:})-fopt(varargin{:});%func(id,optimalSolution(:,k),DIM);
+%        
+%     end
+funcV=feval(fhd,optimalSolution',varargin{:})-fopt(varargin{:});
     C(w)=min(funcV);
 %     csigma = ones(1,DIM)*(sigma);
 %         covv = diag(csigma.^2);
@@ -92,8 +93,9 @@ for kk=1:repeat
 samplePos=(samplePos>VRmax).*VRmax+(samplePos<=VRmax).*samplePos;
                         samplePos=(samplePos<VRmin).*VRmin+(samplePos>=VRmin).*samplePos;
                         %分组计算
+                         sampleValue=feval(fhd,samplePos',varargin{:})-fopt(varargin{:});
                         for i=1:ceil(alfa*group*gr)
-                              sampleValue=feval(fhd,samplePos(i,:)',varargin{:})-fopt(varargin{:});%func(id,samplePos(:,k),DIM);
+%                               sampleValue=feval(fhd,samplePos(i,:)',varargin{:})-fopt(varargin{:});%func(id,samplePos(:,k),DIM);
                      
 %                             sampleValue=func(samplePos(i,:),DIM,varargin{:});%求第i个采样点的函数值
                             w=w+1;
@@ -104,8 +106,8 @@ samplePos=(samplePos>VRmax).*VRmax+(samplePos<=VRmax).*samplePos;
 %                                 change_flag=1;
 %                             end
 
-                             if sampleValue<funcV(i) %如果采样点值小于当前点函数值，则替换,
-                                funcV(i)=sampleValue;
+                             if sampleValue(i)<funcV(i) %如果采样点值小于当前点函数值，则替换,
+                                funcV(i)=sampleValue(i);
                                 optimalSolution(i,:)=samplePos(i,:);
                                 change_flag=1;
                             end

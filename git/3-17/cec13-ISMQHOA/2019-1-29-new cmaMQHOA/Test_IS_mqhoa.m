@@ -24,7 +24,7 @@ for i=1:28
 %           [gbest,gbestval,Convergence,FES]= mqhao_GI1(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax,func_num);
 %                   [gbest,gbestval,Convergence,FES]= test(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax,func_num);
 
-                  [gbest,gbestval,Convergence,FES]= test(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax,func_num);
+                  [gbest,gbestval,Convergence,FES]= test(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax);
 %             feval(fhd,optimalSolution(k,:)',varargin{:})
 %         [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
 %         xbest(i,:)=gbest;

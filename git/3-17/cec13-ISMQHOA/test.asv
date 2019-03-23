@@ -1,7 +1,7 @@
 function [gbest,gbestval,C,fitcount]= mqhao_with_subgroup1(fhd,Dimension,Particle_Number,group,gr,Max_Gen,VRmin,VRmax,varargin)
 %对种群进行分组进化比对
-fopt=[-1400,-1300,-1200,-1100,-1000,-900,-800,-700,-600,-500,-400,-300,-200,-100,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400];
-% fopt=zeros(1,28);
+% fopt=[-1400,-1300,-1200,-1100,-1000,-900,-800,-700,-600,-500,-400,-300,-200,-100,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400];
+fopt=zeros(1,28);
 DIM=Dimension;
 minDomain=VRmin;
 maxDomain=VRmax;
