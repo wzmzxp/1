@@ -18,9 +18,9 @@ for i=1:28
   
     for j=1:runs
         i,j,
-          [gbest,gbestval,Convergence,FES]= mqhao_GI1(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax,func_num);
+%           [gbest,gbestval,Convergence,FES]= mqhao_GI1(fhd,D,pop_size,group,gr,iter_max,Xmin,Xmax,func_num);
                 
-%         [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
+        [gbest,gbestval,FES]= IS_mqhoa(fhd,D,pop_size,iter_max,Xmin,Xmax,func_num);
 %         xbest(i,:)=gbest;
         fbest(i,j)=gbestval;
         fbest(i,j)
